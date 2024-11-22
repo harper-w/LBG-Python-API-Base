@@ -13,5 +13,5 @@ RUN pip3 install gunicorn
 EXPOSE 8081
 
 # Create an entrypoint
-ENTRYPOINT [ "python", "app.py" ]
+ENTRYPOINT [ "python", "lbg.py" ]
 
