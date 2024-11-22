@@ -16,7 +16,15 @@ spec:
       - name: nginx
         image: nginx:latest
         ports:
-        - containerPort: 8081
+        - containerPort: 80  # Nginx will listen on port 80
+        volumeMounts:
+        - name: nginx-conf
+          mountPath: /etc/nginx/nginx.conf  # Mount custom config file
+          subPath: nginx.conf
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: nginx-config  # Refers to the configmap for nginx.conf
 ---
 apiVersion: v1
 kind: Service
@@ -27,6 +35,6 @@ spec:
     app: nginx
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 8081
-  type: LoadBalancer
+      port: 80  # Exposing port 80 for external access
+      targetPort: 80
+  type: LoadBalancer  # Will get an external IP if using on GCP/AWS, etc.
