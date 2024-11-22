@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = "harper1105/duo-jenk"
+        IMAGE_NAME = "harper1105/myapp:v3"
         BUILD_TAG = "v${BUILD_NUMBER}"
     }
     stages {
