@@ -1,17 +1,12 @@
 FROM python:latest
 
-# Copy your application files
+WORKDIR /app
+
 COPY . .
 
-# Install required dependencies
-RUN pip3 install -r "requirements.txt"
+RUN pip install -r "requirements.txt"
 
-# Install Gunicorn
-RUN pip3 install gunicorn
+EXPOSE 8080
 
-# Expose a different port to avoid conflicts with Jenkins
-EXPOSE 8081
-
-# Create an entrypoint
-ENTRYPOINT [ "python", "lbg.py" ]
+ENTRYPOINT ["python", "lbg.py"]
 
