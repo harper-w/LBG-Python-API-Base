@@ -27,7 +27,7 @@ pipeline {
                     // Build Docker image
                     echo "Building Docker image for branch: ${env.GIT_BRANCH}"
                     sh """
-                    docker build -t ${IMAGE_NAME}:latest -t ${IMAGE_NAME}:${BUILD_TAG} .
+                    docker build -t ${IMAGE_NAME} -t ${IMAGE_NAME}:${BUILD_TAG} .
                     """
                 }
             }
@@ -38,7 +38,7 @@ pipeline {
                     // Push Docker image to Docker Hub
                     echo "Pushing Docker image for branch: ${env.GIT_BRANCH}"
                     sh """
-                    docker push ${IMAGE_NAME}:latest
+                    docker push ${IMAGE_NAME}
                     docker push ${IMAGE_NAME}:${BUILD_TAG}
                     """
                 }
