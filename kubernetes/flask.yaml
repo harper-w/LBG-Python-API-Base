@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: flask
-        image: harper1105/myapp:v3
+        image: harper1105/myapp
         ports:
         - containerPort: 8081
 ---
