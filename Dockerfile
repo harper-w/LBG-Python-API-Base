@@ -12,6 +12,6 @@ RUN pip3 install gunicorn
 # Expose a different port to avoid conflicts with Jenkins
 EXPOSE 8081
 
-# Start the app using Gunicorn
-ENTRYPOINT ["gunicorn", "-b", "0.0.0.0:8081", "lbg:app"]
+# Create an entrypoint
+ENTRYPOINT [ "python", "app.py" ]
 
